@@ -1,0 +1,17 @@
+---
+- name: Install packages using npm
+  command: npm install
+  args:
+    chdir: /srv/website
+
+- name: Install forever (to run Node.js app).
+  npm: name=forever global=yes state=present
+
+- name: Check list of Node.js apps running.
+  command: forever list
+  register: forever_list
+  changed_when: false
+
+- name: Start app
+  command: forevere start /srv/website
+  when: "forever_list.stdout.find('/srv/website/src/index.js') == -1"

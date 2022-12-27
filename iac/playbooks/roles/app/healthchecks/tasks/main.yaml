@@ -1,0 +1,19 @@
+---
+- name: Check Redis health
+  command: redis-cli ping
+  register: redis_health
+
+- name: Print Redis health
+  debug:
+    msg: "{{ redis_health.stdout }}"
+
+#- name: Run test app
+#  command: npm test
+#  args:
+#    chdir: /srv/website
+#  register: test_health
+#
+#- name: Print test healthchecks
+#  debug:
+#    msg: "{{ test_health.stdout }}"
+
