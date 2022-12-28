@@ -3,11 +3,11 @@ kind: DestinationRule
 metadata:
   name: devops-destination
 spec:
-  host: project-devops
+  host: devopsdj
   subsets:
-  - name: v1
+  - name: devopsdj
     labels:
       version: v1
-  - name: v2
+  - name: devopsdj2
     labels:
       version: v2

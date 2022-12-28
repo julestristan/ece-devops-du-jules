@@ -12,7 +12,7 @@ services:
       timeout: 20s
       retries: 5
   web:
-    image: ametizs/devops ##name of the image
+    image: ametizs/devopsdj ##name of the image
     ports:
       - "5000:3000"
     volumes:

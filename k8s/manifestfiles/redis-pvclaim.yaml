@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: task-pv-claim
+  creationTimestamp: null
+  labels:
+    redis: redisvolume
+  name: redisvolume
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 3Gi
+      storage: 100Mi
+status: {}

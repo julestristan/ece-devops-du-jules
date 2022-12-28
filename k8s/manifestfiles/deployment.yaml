@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devopsdj
+  name: devopsdj
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devopsdj
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: devopsdj
+    spec:
+      containers:
+        - env:
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
+          image: ametizs/devopsdj
+          name: devopsdj
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    version: v2
+  name: devopsdj2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devopsdj
+      version: v2
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: devopsdj
+        version: v2
+    spec:
+      containers:
+        - env:
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
+          image: ametizs/devopsdj2
+          name: devopsdj
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always

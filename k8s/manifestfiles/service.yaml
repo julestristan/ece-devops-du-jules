@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: devopsdj
+  name: devopsdj
+spec:
+  ports:
+    - protocol: TCP
+      port: 6500
+      targetPort: 3000
+  selector:
+    app: devopsdj
+  type: LoadBalancer
+      
+
+     

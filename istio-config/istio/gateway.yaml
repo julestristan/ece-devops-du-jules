@@ -4,7 +4,7 @@ metadata:
   name: devops-gateway
 spec:
   selector:
-    istio: ingressgateway # use istio default controller
+    app: ingressgateway # use istio default controller
   servers:
   - port:
       number: 80
