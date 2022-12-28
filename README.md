@@ -29,7 +29,7 @@ Run the following command to execute the start script and exit with CTRL + C:
   npm start
    ```
 
-![1.1](images/1.1.png)
+![1.1](img/1.1.png)
 
 Run the test:
 
@@ -37,7 +37,7 @@ Run the test:
   npm test
    ```
 
-![1.2](images/1.2.png)
+![1.2](img/1.2.png)
 
 All 20 tests should be passing.
 
@@ -50,15 +50,15 @@ We created a workflow that we can deploy with Azure Microsoft(CD).
 
 Workflow of the project:
 
-![2.1](images/2.1.png)
+![2.1](img/2.1.png)
 
 Example of a recent commit change:
 
-![2.2](images/2.2.png)
+![2.2](img/2.2.png)
 
 CI of the Workflow:
 
-![2.3](images/2.3.png)
+![2.3](img/2.3.png)
 
 ### **Continuous Delivery**
 
@@ -66,11 +66,11 @@ We deployed our app with Azure because we could not use Heroku with their new po
 
 Here is the deployment we made using Azure Microsoft:
 
-![2.4](images/2.4.png)
+![2.4](img/2.4.png)
 
 This is the result of a new commit with the Azure deployment:
 
-![2.5](images/2.5.png)
+![2.5](img/2.5.png)
 
 ## 3. Configure and provision a virtual environment and run your application using the IaC approach
 
@@ -78,7 +78,7 @@ We used the Vagrantfile to define how the VM will run.<br/>
 The use of Ansible and the playbook is also defined in that file.<br/>
 Then the use of vagrant up and vagrant ssh should allow to use the virtual environment.<br/>
 
-![3.1](images/3.1.png)
+![3.1](img/3.1.png)
 
 Unfortunately we kept on having errors with vagrant and the use of "vagrant up"
 
@@ -90,12 +90,12 @@ To build an image of the application, run the following command in the root fold
   docker build -t devops .
    ```
 
-![4.1](images/4.1.png)
+![4.1](img/4.1.png)
 
 The image is now built.<br/>
 You can run the application to see if it is working accordingly:
 
-![4.2](images/4.2.png)
+![4.2](img/4.2.png)
 
 To push the image that we just built, we used these commands:
 
@@ -105,11 +105,11 @@ To push the image that we just built, we used these commands:
   docker push account/devopsdj
    ```
 
-![4.3](images/4.3.png)
+![4.3](img/4.3.png)
 
 Here is the result that we can check on <https://hub.docker.com>:
 
-![4.4](images/4.4.png)
+![4.4](img/4.4.png)
 
 ## 5. Make container orchestration using Docker Compose
 
@@ -119,11 +119,11 @@ Run the docker-compose.yaml file that is in the root folder using:
   docker-compose up 
    ```
 
-![5.1](images/5.1.png)
+![5.1](img/5.1.png)
 
 The port to access the localhost is 5000 as stated in the docker-compose.yaml file: <localhost:5000>
 
-![5.2](images/5.2.png)
+![5.2](img/5.2.png)
 
 The localhost website opens correctly.
 
@@ -131,7 +131,7 @@ The localhost website opens correctly.
 
 Run the cluster and initiate Kubernetes by running this command:
 
-![6.1](images/6.1.png)
+![6.1](img/6.1.png)
 
 Go to ./k8s/manifestfiles and apply all the manifest files:
 
@@ -140,7 +140,7 @@ Go to ./k8s/manifestfiles and apply all the manifest files:
   kubectl apply -f .
    ```
 
-![6.2](images/6.2.png)
+![6.2](img/6.2.png)
 
 Now we can generate the URL to access our service devopsdj:
 
@@ -148,11 +148,11 @@ Now we can generate the URL to access our service devopsdj:
   minikube service devopsdj
    ```
 
-![6.3](images/6.3.png)
+![6.3](img/6.3.png)
 
 The URL in the second table is the one we are able to connect to via a navigator:
 
-![6.4](images/6.4.png)
+![6.4](img/6.4.png)
 
 ## 7. Make a service mesh using Istio
 
@@ -178,7 +178,7 @@ Then we created and build an image of a second application (devopsdj2):
   docker push account/devops2
    ```
 
-![7.1](images/7.1.png)
+![7.1](img/7.1.png)
 
 Apply the destination.yaml, gateway.yaml and virtualservice.yaml manifest files.
 We now have two versions (devopsdj and devopsdj2) that we want to perform service mesh on.<br/>
@@ -190,15 +190,15 @@ The manifest files (destination.yaml, gateway.yaml and virtualservice.yaml) allo
   kubectl apply -f .
    ```
 
-![7.2](images/7.2.png)
+![7.2](img/7.2.png)
 
 Check the ip and port to open the application on localhost (IP -> minikube ip; port -> 80 on istio-ingressgateway entry):
 
-![7.3](images/7.3.png)
+![7.3](img/7.3.png)
 
 After launching the localhost with the according IP and port:
 
-![7.4](images/7.4.png)
+![7.4](img/7.4.png)
 
 We did not figure out why the localhost did not open the application.
 
@@ -221,19 +221,19 @@ To configure Prometheus:
   kubectl port-forward svc/prometheus -n istio-system 9090
    ```
 
-![8.1](images/8.1.png)
+![8.1](img/8.1.png)
 
-![8.2](images/8.2.png)
+![8.2](img/8.2.png)
 
 We can know open our navigator and check <http://localhost:9090>
 
 Landing page:
 
-![8.3](images/8.3.png)
+![8.3](img/8.3.png)
 
 Check the endpoints:
 
-![8.4](images/8.4.png)
+![8.4](img/8.4.png)
 
 ### **Grafana**
 
@@ -245,12 +245,12 @@ To configure Grafana:
   kubectl port-forward svc/grafana -n istio-system 3000
    ```
 
-![8.5](images/8.5.png)
+![8.5](img/8.5.png)
 
 We can know open our navigator and check <http://localhost:3000>
 
-![8.6](images/8.6.png)
+![8.6](img/8.6.png)
 
 We can access to some detailed statistics regarding CPU, memory usage and more:
 
-![8.7](images/8.7.png)
+![8.7](img/8.7.png)
